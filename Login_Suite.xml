@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Login Suite">
+
+<test name="ValidLoginTest">
+    <classes>
+        <class name="com.testnowjavasample.Login.ValidLoginTest" ></class>  
+    </classes>
+</test>
+
+
+</suite>
+

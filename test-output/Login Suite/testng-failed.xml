@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Login Suite]">
+  <test name="ValidLoginTest">
+    <classes>
+      <class name="com.testnowjavasample.Login.ValidLoginTest"/>
+    </classes>
+  </test> <!-- ValidLoginTest -->
+  <test name="ValidLoginTest(failed)">
+    <classes>
+      <class name="com.testnowjavasample.Login.ValidLoginTest">
+        <methods>
+          <include name="ValidTestData"/>
+          <include name="checkTestSkip"/>
+          <include name="checkSuiteSkip"/>
+        </methods>
+      </class> <!-- com.testnowjavasample.Login.ValidLoginTest -->
+    </classes>
+  </test> <!-- ValidLoginTest(failed) -->
+</suite> <!-- Failed suite [Login Suite] -->
