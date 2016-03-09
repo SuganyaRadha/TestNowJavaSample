@@ -1,12 +1,14 @@
 package test;
 
+import com.testnowjavasample.base.TestBase;
+import com.testnowjavasample.util.TestUtil;
 import com.testnowjavasample.util.Xls_Reader;
 
 public class TestDataExtract {
 
 	public static void main(String[] args) {
 
-		Xls_Reader x = new Xls_Reader(System.getProperty("user.dir")+"\\src\\test\\java\\com\\testnowjavasample\\xls\\LoginTestCase.xlsx");
+		Xls_Reader x = new Xls_Reader(TestUtil.readFileFromClassPath("LoginTestCase.xlsx"));
 		System.out.println(getData(x, "TestDataforLoginPage" ));
 		System.out.println(getData(x, "TestDataforRegistration" ));
 	}

@@ -4,14 +4,14 @@ import org.testng.SkipException;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import com.testnowjavasample.util.testUtil;
+import com.testnowjavasample.util.TestUtil;
 
 public class InvalidLoginTest extends TestSuiteBase
 {
 	@BeforeTest
 	public void checkTestSkip()
 	{
-		if(!testUtil.isTestCaseRunnable(LoginSuite, "InvalidLoginTest"))
+		if(!TestUtil.isTestCaseRunnable(LoginSuite, "InvalidLoginTest"))
 		{
 			throw new SkipException("Runmode of InvalidLoginTest case is set to No and hence skipping this test case");
 		}

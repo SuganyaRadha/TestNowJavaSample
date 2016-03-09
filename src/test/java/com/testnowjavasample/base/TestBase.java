@@ -3,6 +3,7 @@ package com.testnowjavasample.base;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 import org.apache.log4j.Logger;
@@ -11,6 +12,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
+import com.testnowjavasample.util.TestUtil;
 import com.testnowjavasample.util.Xls_Reader;
 
 public class TestBase 
@@ -33,24 +35,24 @@ public class TestBase
 		if (!isInitialized)
 		{
 		//logs
-		Logger APP_LOGS = Logger.getLogger("devpinoyLogger");
+		//Logger APP_LOGS = Logger.getLogger("devpinoyLogger");
 				
 		//.properties files
-		APP_LOGS.debug("Loading Property files");
+		//APP_LOGS.debug("Loading Property files");
 		Config = new Properties();
-		FileInputStream ip = new FileInputStream (System.getProperty("user.dir")+"//src//test//java//com//testnowjavasample//config//config.properties");
+		InputStream ip = TestUtil.readFileFromClassPath("config.properties");
 		Config.load(ip);
 		
 		OR = new Properties();
-		ip = new FileInputStream (System.getProperty("user.dir")+"//src//test//java//com//testnowjavasample//config//OR.properties");
+		ip = TestUtil.readFileFromClassPath("OR.properties");
 		OR.load(ip);
-		APP_LOGS.debug("Loaded Property files Successfully");
+		//APP_LOGS.debug("Loaded Property files Successfully");
 		
 		//XLS
-		suiteXls= new Xls_Reader(System.getProperty("user.dir")+"//src//test//java//com//testnowjavasample//xls//TestNowSuite.xlsx");
-		LoginSuite=new Xls_Reader(System.getProperty("user.dir")+"//src//test//java//com//testnowjavasample//xls//LoginTestCase.xlsx");
-		DashboardSuite=new Xls_Reader(System.getProperty("user.dir")+"//src//test//java//com//testnowjavasample//xls//DashboardTestCase.xlsx");
-		CheckoutSuite=new Xls_Reader(System.getProperty("user.dir")+"//src//test//java//com//testnowjavasample//xls//CheckoutTestCase.xlsx");
+		suiteXls= new Xls_Reader(TestUtil.readFileFromClassPath("TestNowSuite.xlsx"));
+		LoginSuite=new Xls_Reader(TestUtil.readFileFromClassPath("LoginTestCase.xlsx"));
+		DashboardSuite=new Xls_Reader(TestUtil.readFileFromClassPath("DashboardTestCase.xlsx"));
+		CheckoutSuite=new Xls_Reader(TestUtil.readFileFromClassPath("CheckoutTestCase.xlsx"));
 		isInitialized = true;
 		
 		
