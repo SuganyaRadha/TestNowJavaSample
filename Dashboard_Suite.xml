@@ -1,21 +1,17 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite B">
+<suite name="Dashboard Suite">
 
-
-
-
-<test name="Test B1">
+<test name="RegisteredUser">
     <classes>
-        <class name="com.qtpselenium.suiteB.TestCase_B1" ></class>  
+        <class name="com.testnowjavasample.Dashboard.RegisteredUser" ></class>  
     </classes>
 </test>
 
-<test name="Test B2">
+<test name="GuestUser">
     <classes>
-        <class name="com.qtpselenium.suiteB.TestCase_B2" ></class>  
+        <class name="com.testnowjavasample.Dashboard.GuestUser" ></class>  
     </classes>
 </test>
-
 
 </suite>
 

@@ -1,9 +1,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="TestNow Suites">
 
-  <suite-files>
-   <suite-file path="./Login_Suite.xml" />
-
+ 	<suite-files>
+   		<suite-file path="./Login_Suite.xml" />
+   		<suite-file path="./Dashboard_Suite.xml" />
    
-  </suite-files>
+  	</suite-files>
 </suite>

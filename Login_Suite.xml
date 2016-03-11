@@ -6,7 +6,26 @@
         <class name="com.testnowjavasample.Login.ValidLoginTest" ></class>  
     </classes>
 </test>
-
+<test name="InvalidLoginTest">
+    <classes>
+        <class name="com.testnowjavasample.Login.InvalidLoginTest" ></class>  
+    </classes>
+</test>
+<test name="LoginTestWithoutCredentials">
+    <classes>
+        <class name="com.testnowjavasample.Login.LoginTestWithoutCredentials" ></class>  
+    </classes>
+</test>
+<test name="RegisteringWithNewUserName">
+    <classes>
+        <class name="com.testnowjavasample.Login.RegisteringWithNewUserName" ></class>  
+    </classes>
+</test>
+<test name="RegisteringWithExistingUserName">
+    <classes>
+        <class name="com.testnowjavasample.Login.RegisteringWithExistingUserName" ></class>  
+    </classes>
+</test>
 
 </suite>
 

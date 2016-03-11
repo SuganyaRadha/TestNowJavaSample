@@ -25,7 +25,7 @@ public class TestBase
 	public static Xls_Reader DashboardSuite=null;
 	public static Xls_Reader CheckoutSuite=null;
 	public static boolean isInitialized=false;
-	public static WebDriver driver = null;
+	//public static WebDriver driver = null;
 	
 
 	
@@ -58,7 +58,7 @@ public class TestBase
 		
 		}
 	}
-	public void openBrowser()
+/*	public void openBrowser()
 	{
 		if(Config.getProperty("browserType").equals("Mozilla"))
 			driver = new FirefoxDriver();
@@ -67,10 +67,7 @@ public class TestBase
 		else if (Config.getProperty("browserType").equals("Chrome"))
 			driver = new ChromeDriver();
 
-	}
+	}*/
 	
-	public void closeBrowser()
-	{
-		driver.quit();
-	}
+	
 }
