@@ -4,7 +4,10 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.testng.Assert;
+import org.testng.ITestResult;
 import org.testng.SkipException;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -28,15 +31,8 @@ public class InvalidLoginTest extends TestSuiteBase
 		Driver_Config.driver.findElement(By.id(OR.getProperty("password_object"))).sendKeys(passwd);
 		Driver_Config.driver.findElement(By.id(OR.getProperty("login_button"))).click();
 		
-		if(Driver_Config.driver.getPageSource().contains("Invalid login or password"))
-		{
-			System.out.println("Text is present, Pass");
-		}
-		else
-		{
-			System.out.println("Text is absent, Fail");
-		}
-		
+		Assert.assertTrue(Driver_Config.driver.getPageSource().contains("Invalid login or password"), "Login Test with invalid credentials is not successful");
+				
 		Driver_Config.driver.findElement(By.id(OR.getProperty("username_object"))).clear();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
 		Driver_Config.driver.findElement(By.id(OR.getProperty("password_object"))).clear();
@@ -47,8 +43,18 @@ public class InvalidLoginTest extends TestSuiteBase
 	public Object[][] getTestData()
 	{
 		Object[][] data = TestUtil.getData(LoginSuite, this.getClass().getSimpleName());
-		System.out.println("I am passing data: " + data[0][0] + ".." + data[0][1]);
+		//System.out.println("I am passing data: " + data[0][0] + ".." + data[0][1]);
 		return data;
 	}
+	
+	@AfterMethod
+	  public void takeScreenshotOnFailure(ITestResult result) throws IOException
+	  {
+		 if(ITestResult.FAILURE == result.getStatus())
+		 {
+			 TestUtil.takescreenshot(Driver_Config.driver, "InvalidLoginTestFailed");
+     
+		 }
+	  }
 }
 

@@ -1,9 +1,13 @@
 package com.testnowjavasample.Login;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.testng.Assert;
+import org.testng.ITestResult;
 import org.testng.SkipException;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -37,19 +41,9 @@ public class RegisteringWithNewUserName extends TestSuiteBase
 		Driver_Config.driver.findElement(By.id(OR.getProperty("register_confirmpassword"))).sendKeys(passwd);
 		Driver_Config.driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("register_button"))).click();
+		Driver_Config.driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
 		
-		if(Driver_Config.driver.getPageSource().contains("My Dashboard"))
-		{
-			if (Driver_Config.driver.getPageSource().contains("Thank you for registering with Main Website Store."))
-			{
-				System.out.println("Text is present");
-			}
-			else
-			{
-				System.out.println("Text is absent");
-			}
-			
-		}
+		Assert.assertTrue(Driver_Config.driver.getPageSource().contains("Thank you for registering with Main Website Store."), "Registeration with new username is not successful");
 		
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("account_link"))).click();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
@@ -60,7 +54,17 @@ public class RegisteringWithNewUserName extends TestSuiteBase
 	public Object[][] getTestData()
 	{
 		Object[][] data = TestUtil.getData(LoginSuite, this.getClass().getSimpleName());
-		System.out.println("I am passing data: " + data[0][0] + ".." + data[0][1]);
+		//System.out.println("I am passing data: " + data[0][0] + ".." + data[0][1]);
 		return data;
 	}
+	
+	@AfterMethod
+	  public void takeScreenshotOnFailure(ITestResult result) throws IOException
+	  {
+		 if(ITestResult.FAILURE == result.getStatus())
+		 {
+			 TestUtil.takescreenshot(Driver_Config.driver, "RegNewUserFailed");
+   
+		 }
+	  }
 }

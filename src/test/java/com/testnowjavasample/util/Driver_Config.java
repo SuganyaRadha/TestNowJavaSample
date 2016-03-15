@@ -26,8 +26,8 @@ public class Driver_Config
 	//selecting the browser type and calling the corresponding functions
 	public static void driverConfig() throws IOException
 	{
-		//String browser = getEnvVariable("BROWSER");
-		String browser = "Firefox"; 
+		String browser = getEnvVariable("BROWSER");
+		//String browser = "Firefox"; 
 		if ("Firefox".equalsIgnoreCase(browser))
 		{
 			firefoxDriver();
@@ -44,7 +44,7 @@ public class Driver_Config
 		{
 			androidDriver();
 		}
-		else if ("opera".equalsIgnoreCase(browser))
+		else if ("Opera".equalsIgnoreCase(browser))
 		{
 			operaDriver();
 		}
@@ -98,6 +98,7 @@ public class Driver_Config
 	public static void chromeDriver()
 	{
 		System.setProperty("webdriver.chrome.driver", "usr/local/bin/chromedriver.exe");
+		//System.setProperty("webdriver.chrome.driver", "Drivers//chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		driver.manage().window().maximize();

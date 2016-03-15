@@ -1,19 +1,42 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite C">
+<suite name="Checkout Suite">
 
 
-<test name="Test C1">
+<test name="Guest_Credit">
     <classes>
-        <class name="com.qtpselenium.suiteC.TestCase_C1" ></class>  
+        <class name="com.testnowjavasample.checkout.Guest_Credit" ></class>  
     </classes>
 </test>
 
-<test name="Test C2">
+<test name="Guest_COD">
     <classes>
-        <class name="com.qtpselenium.suiteC.TestCase_C2" ></class>  
+        <class name="com.testnowjavasample.checkout.Guest_COD" ></class>  
     </classes>
 </test>
 
+<test name="Guest_Cheque">
+    <classes>
+        <class name="com.testnowjavasample.checkout.Guest_Cheque" ></class>  
+    </classes>
+</test>
+
+<test name="RegisteredUser_Credit">
+    <classes>
+        <class name="com.testnowjavasample.checkout.RegisteredUser_Credit" ></class>  
+    </classes>
+</test>
+
+<test name="RegisteredUser_COD">
+    <classes>
+        <class name="com.testnowjavasample.checkout.RegisteredUser_COD" ></class>  
+    </classes>
+</test>
+
+<test name="RegisteredUser_Cheque">
+    <classes>
+        <class name="com.testnowjavasample.checkout.RegisteredUser_Cheque" ></class>  
+    </classes>
+</test>
 
 </suite>
 

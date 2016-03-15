@@ -1,9 +1,13 @@
 package com.testnowjavasample.Login;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.testng.Assert;
+import org.testng.ITestResult;
 import org.testng.SkipException;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -32,21 +36,25 @@ public class RegisteringWithExistingUserName extends TestSuiteBase
 		Driver_Config.driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("register_button"))).click();
 		
-		if (Driver_Config.driver.getPageSource().contains("There is already an account with this email address"))
-		{
-			System.out.println("Text is present");
-		}
-		else
-		{
-			System.out.println("Text is absent");
-		}
+		Assert.assertTrue(Driver_Config.driver.getPageSource().contains("There is already an account with this email address"), "Registeration with existing username is not successful");
+		
 	}
 	
 	@DataProvider
 	public Object[][] getTestData()
 	{
 		Object[][] data = TestUtil.getData(LoginSuite, this.getClass().getSimpleName());
-		System.out.println("I am passing data: " + data[0][0] + ".." + data[0][1]);
+		//System.out.println("I am passing data: " + data[0][0] + ".." + data[0][1]);
 		return data;
 	}
+	
+	@AfterMethod
+	  public void takeScreenshotOnFailure(ITestResult result) throws IOException
+	  {
+		 if(ITestResult.FAILURE == result.getStatus())
+		 {
+			 TestUtil.takescreenshot(Driver_Config.driver, "RegExistingUserFailed");
+     
+		 }
+	  }
 }

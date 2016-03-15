@@ -77,7 +77,11 @@
 		<artifactId>selenium-ie-driver</artifactId>
 		<version>2.52.0</version>
 	</dependency>
-	
+	<dependency>
+		<groupId>net.sf.xsltmp</groupId>
+		<artifactId>xslt-generator-maven-plugin</artifactId>
+		<version>1.8</version>
+	</dependency>
 	
 	
 	<dependency>
@@ -93,4 +97,5 @@
 	
 	
   </dependencies>
+  
 </project>

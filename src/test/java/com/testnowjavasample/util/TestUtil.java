@@ -7,6 +7,9 @@ import java.io.InputStream;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -19,8 +22,8 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class TestUtil {
 	
-	private static final String CHAR_LIST = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-	private static final int RANDOM_STRING_LENGTH = 10;
+	private static final String char_list = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+	private static final int random_string_length = 10;
 	
 	//finds if the test suite is runnable
 	public static boolean isSuiteRunnable(Xls_Reader xls, String suiteName)
@@ -103,10 +106,10 @@ public class TestUtil {
 		 public String generateRandomString()
 		 {
 			 StringBuffer randStr = new StringBuffer();
-			 for(int i=0; i<RANDOM_STRING_LENGTH; i++)
+			 for(int i=0; i<random_string_length; i++)
 		     {
 		    	 int number = getRandomNumber();
-		    	 char ch = CHAR_LIST.charAt(number);
+		    	 char ch = char_list.charAt(number);
 		    	 randStr.append(ch);
 		     }
 		     return randStr.toString();
@@ -115,7 +118,7 @@ public class TestUtil {
 		 {
 			 int randomInt = 0;
 		     Random randomGenerator = new Random();
-		     randomInt = randomGenerator.nextInt(CHAR_LIST.length());
+		     randomInt = randomGenerator.nextInt(char_list.length());
 		     if (randomInt - 1 == -1) 
 		     {
 		    	 return randomInt;
@@ -125,5 +128,14 @@ public class TestUtil {
 		    	 return randomInt - 1;
 		     }
 		  }
+		 
+		  public static void takescreenshot(WebDriver driver,String Screenshotname) throws IOException
+	       {
+	              TakesScreenshot takescreenshot=(TakesScreenshot)driver;
+	              File source=takescreenshot.getScreenshotAs(OutputType.FILE);
+	              FileUtils.copyFile(source, new File("./Screenshots/"+Screenshotname+".png"));
+	              System.out.println("Screenshot Taken Successfully!!!!");
+	             
+	       }
 		
 }

@@ -25,9 +25,7 @@ public class TestBase
 	public static Xls_Reader DashboardSuite=null;
 	public static Xls_Reader CheckoutSuite=null;
 	public static boolean isInitialized=false;
-	//public static WebDriver driver = null;
 	
-
 	
 	//initializing the Tests
 	public void initialize() throws IOException
@@ -58,16 +56,7 @@ public class TestBase
 		
 		}
 	}
-/*	public void openBrowser()
-	{
-		if(Config.getProperty("browserType").equals("Mozilla"))
-			driver = new FirefoxDriver();
-		else if (Config.getProperty("browserType").equals("IE"))
-			driver = new InternetExplorerDriver();
-		else if (Config.getProperty("browserType").equals("Chrome"))
-			driver = new ChromeDriver();
 
-	}*/
 	
 	
 }
