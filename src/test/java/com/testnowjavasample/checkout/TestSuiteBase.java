@@ -1,11 +1,15 @@
 package com.testnowjavasample.checkout;
 
 import java.io.IOException;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.SkipException;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
@@ -47,6 +51,7 @@ public class TestSuiteBase extends TestBase{
 		
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("billing_continue"))).click();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(180, TimeUnit.SECONDS);
+		new WebDriverWait(Driver_Config.driver, 120).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.getProperty("shipping_continue"))));
 	}
 	
 	public static void fillCreditCardDetails()
@@ -97,7 +102,35 @@ public class TestSuiteBase extends TestBase{
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_custPassword"))).sendKeys("adminadmin");
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_confmPassword"))).sendKeys("adminadmin");
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("billing_continue"))).click();
+		new WebDriverWait(Driver_Config.driver, 120).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.getProperty("shipping_continue"))));
 		Driver_Config.driver.manage().timeouts().implicitlyWait(180, TimeUnit.SECONDS);
+	}
+	
+	public static void addToCart(String type) throws Throwable 
+	{
+		String run_index = System.getenv("RUN_INDEX");
+		int product_index;
+		Random random = new Random();
+		if (type.equalsIgnoreCase("RUN_INDEX")) 
+		{
+			if (run_index == null) 
+			{
+				product_index = random.nextInt(3);									
+			}
+			else 
+			{
+				product_index = Integer.parseInt(run_index)%3;				
+			}
+			if (product_index == 0) 
+			{
+				product_index = 3;
+			}
+		} 
+		else 
+		{
+			product_index = Integer.parseInt(type);
+		}		
+		Driver_Config.driver.findElement(By.xpath("//ul[contains(@class,'products-grid')]/li["+product_index+"]//button")).click();		
 	}
 	
 	@AfterSuite

@@ -11,6 +11,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.opera.OperaDriver;
+import org.openqa.selenium.opera.OperaDriverService;
+import org.openqa.selenium.opera.OperaOptions;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -28,7 +31,7 @@ public class Driver_Config
 	{
 		String browser = getEnvVariable("BROWSER");
 		if (browser == null)
-			browser = "Firefox";
+			browser = "firefox";
 		//String browser = "Firefox"; 
 		if ("Firefox".equalsIgnoreCase(browser))
 		{
@@ -46,7 +49,7 @@ public class Driver_Config
 		{
 			androidDriver();
 		}
-		else if ("Opera".equalsIgnoreCase(browser))
+		else if ("opera".equalsIgnoreCase(browser))
 		{
 			operaDriver();
 		}
@@ -99,8 +102,9 @@ public class Driver_Config
 	}
 	public static void chromeDriver()
 	{
-		//System.setProperty("webdriver.chrome.driver", "usr/local/bin/chromedriver");
-		System.setProperty("webdriver.chrome.driver", "Drivers//chromedriver");
+		System.setProperty("webdriver.chrome.driver", "usr/local/bin/chromedriver");
+		//System.setProperty("webdriver.chrome.driver", "//home//kaushal//Suganya//workspace//TestNowJavaSample//Drivers//chromedriver");
+		
 		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
@@ -108,14 +112,17 @@ public class Driver_Config
 	}
 	public static void IEDriver()
 	{
-		System.setProperty("webdriver.ie.driver", "usr/local/bin/IEDriverServer");
-		driver = new InternetExplorerDriver();
-		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+		
 		DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
 		capabilities.setCapability(InternetExplorerDriver.IE_ENSURE_CLEAN_SESSION, true);
 		capabilities.setCapability(InternetExplorerDriver.NATIVE_EVENTS, false);
+		capabilities.setJavascriptEnabled(true);
+		capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
 		//capabilities.setCapability(InternetExplorerDriver.JAVASCRIPT_ENABLED, true);
-		
+		System.setProperty("webdriver.ie.driver", "usr/local/bin/IEDriverServer");
+		driver = new InternetExplorerDriver(capabilities);
+		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+
 		driver.manage().window().maximize();
 		driver.manage().timeouts().pageLoadTimeout(120, TimeUnit.SECONDS);
 	}
@@ -139,14 +146,21 @@ public class Driver_Config
 		driver.manage().window().maximize();
 		driver.manage().timeouts().pageLoadTimeout(120, TimeUnit.SECONDS);
 	}
-	public static void operaDriver()
+	public static void operaDriver() throws IOException
 	{
-		System.setProperty("webdriver.opera.driver", "/usr/local/bin/operadriver.exe");
 
-		ChromeOptions options = new ChromeOptions();
-		options.setBinary("/usr/bin/opera");        
-
-		DesiredCapabilities capabilities = new DesiredCapabilities();
+		DesiredCapabilities capabilities = DesiredCapabilities.operaBlink();
+		capabilities.setBrowserName("opera");
+		OperaOptions options = new OperaOptions();
+		options.setBinary("/usr/bin/opera");  
+		options.addArguments("--ignore-certificate-errors");
+		capabilities.setCapability(OperaOptions.CAPABILITY, options);			
+		OperaDriverService service = new OperaDriverService.Builder()
+				.usingDriverExecutable(new File("/usr/local/bin/operadriver"))					
+				.usingAnyFreePort().build();
+		service.start();			
+		driver = new RemoteWebDriver(service.getUrl(),capabilities);
+		
 		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 		OperaDriver driver = new OperaDriver(capabilities);
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
