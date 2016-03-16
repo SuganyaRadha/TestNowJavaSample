@@ -21,6 +21,8 @@ public class InvalidLoginTest extends TestSuiteBase
 	public void InValidTestData(String userName, String passwd) throws IOException
 	{
 				
+		//System.out.println("InvalidLoginTest is started");
+		//System.out.println(userName + "... "+ passwd);
 		Driver_Config.driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("account_link"))).click();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
