@@ -21,11 +21,13 @@ public class Guest_COD extends TestSuiteBase
 	public void GuestByCOD()
 	{
 		Driver_Config.driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-		Driver_Config.driver.findElement(By.id(OR.getProperty("mainpage_search"))).click();
+		//Driver_Config.driver.findElement(By.id(OR.getProperty("mainpage_search"))).click();
 		Driver_Config.driver.findElement(By.id(OR.getProperty("mainpage_search"))).sendKeys("Samsung");
 		Driver_Config.driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("mainpage_searchbutton"))).click();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+		Driver_Config.driver.findElement(By.id(OR.getProperty("mainpage_search"))).clear();;
+		new WebDriverWait(Driver_Config.driver, 120).until(ExpectedConditions.textToBePresentInElementLocated(By.tagName("h1"), "SEARCH RESULTS FOR 'SAMSUNG'"));
 		
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("product_selectimage"))).click();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
@@ -42,12 +44,14 @@ public class Guest_COD extends TestSuiteBase
 		Driver_Config.driver.manage().timeouts().implicitlyWait(180, TimeUnit.SECONDS);
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("shipping_continue"))).click();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(180, TimeUnit.SECONDS);
+		new WebDriverWait(Driver_Config.driver, 120).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.getProperty("payment_continue"))));
 		Driver_Config.driver.findElement(By.id(OR.getProperty("pmethod_COD"))).click();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(180, TimeUnit.SECONDS);
 		
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("payment_continue"))).click();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(180, TimeUnit.SECONDS);
 		
+		new WebDriverWait(Driver_Config.driver, 120).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.getProperty("place_order"))));
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("place_order"))).click();
 		
 		Driver_Config.driver.manage().timeouts().implicitlyWait(180, TimeUnit.SECONDS);
