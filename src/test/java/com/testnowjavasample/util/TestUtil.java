@@ -71,6 +71,7 @@ public class TestUtil {
 			if (! xls.isSheetExist(sheetName))
 			{
 				xls=null;
+				System.out.println("XLS is null. Sheet name is null");
 				return new Object[1][0];
 			}
 			int rows=xls.getRowCount(sheetName);

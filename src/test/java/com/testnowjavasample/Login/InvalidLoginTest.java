@@ -42,7 +42,7 @@ public class InvalidLoginTest extends TestSuiteBase
 	@DataProvider
 	public Object[][] getTestData()
 	{
-		Object[][] data = TestUtil.getData(LoginSuite, this.getClass().getSimpleName());
+		Object[][] data = TestUtil.getData(LoginSuite, "InvalidLoginTest");
 		//System.out.println("I am passing data: " + data[0][0] + ".." + data[0][1]);
 		return data;
 	}

@@ -33,7 +33,7 @@ public class ValidLoginTest extends TestSuiteBase
 		Driver_Config.driverConfig();
 	
 		String url = Driver_Config.getEnvVariable("TEST_URL");
-		if (url.equals(null))
+		if (url == null)
 		{
 			url = "https://104.131.191.140";
 		}

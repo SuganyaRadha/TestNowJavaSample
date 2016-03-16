@@ -27,6 +27,8 @@ public class Driver_Config
 	public static void driverConfig() throws IOException
 	{
 		String browser = getEnvVariable("BROWSER");
+		if (browser == null)
+			browser = "Firefox";
 		//String browser = "Firefox"; 
 		if ("Firefox".equalsIgnoreCase(browser))
 		{
@@ -58,7 +60,7 @@ public class Driver_Config
 	{
 		String UPA = getEnvVariable("UPA");
 		boolean IS_UPA;
-		if (UPA.equals(null))
+		if (UPA == null)
 			IS_UPA = false;
 		if (IS_UPA = true)
 		{
@@ -97,8 +99,8 @@ public class Driver_Config
 	}
 	public static void chromeDriver()
 	{
-		System.setProperty("webdriver.chrome.driver", "usr/local/bin/chromedriver.exe");
-		//System.setProperty("webdriver.chrome.driver", "Drivers//chromedriver.exe");
+		//System.setProperty("webdriver.chrome.driver", "usr/local/bin/chromedriver");
+		System.setProperty("webdriver.chrome.driver", "Drivers//chromedriver");
 		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
@@ -106,9 +108,14 @@ public class Driver_Config
 	}
 	public static void IEDriver()
 	{
-		System.setProperty("webdriver.ie.driver", "usr/local/bin/IEDriverServer.exe");
+		System.setProperty("webdriver.ie.driver", "usr/local/bin/IEDriverServer");
 		driver = new InternetExplorerDriver();
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+		DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
+		capabilities.setCapability(InternetExplorerDriver.IE_ENSURE_CLEAN_SESSION, true);
+		capabilities.setCapability(InternetExplorerDriver.NATIVE_EVENTS, false);
+		//capabilities.setCapability(InternetExplorerDriver.JAVASCRIPT_ENABLED, true);
+		
 		driver.manage().window().maximize();
 		driver.manage().timeouts().pageLoadTimeout(120, TimeUnit.SECONDS);
 	}
@@ -122,7 +129,7 @@ public class Driver_Config
 	public static void android_ChromeDriver()
 	{
 		driver = new RemoteWebDriver(DesiredCapabilities.android());
-		System.setProperty("webdriver.chrome.driver", "usr/local/bin/chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "usr/local/bin/chromedriver");
 
 	    ChromeOptions chromeOptions = new ChromeOptions();
 	    chromeOptions.setExperimentalOption("androidPackage", "com.android.chrome");
