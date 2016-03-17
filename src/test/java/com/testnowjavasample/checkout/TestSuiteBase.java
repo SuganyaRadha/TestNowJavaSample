@@ -86,23 +86,23 @@ public class TestSuiteBase extends TestBase{
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_lastname"))).sendKeys("Opex2");
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_company"))).sendKeys("Opex");
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_email"))).sendKeys(email);
-		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_street"))).sendKeys("Bangalore");
-		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_city"))).sendKeys("Bangalore");
-		//Driver_Config.driver.findElement(By.id(OR.getProperty("billing_country"))).sendKeys(country);
 		
-	//	WebElement country_type = Driver_Config.driver.findElement(By.id(OR.getProperty("billing_country")));
 		Select country_select = new Select(Driver_Config.driver.findElement(By.id(OR.getProperty("billing_country"))));
 		System.out.println(country_select.getFirstSelectedOption());
 		country_select.selectByVisibleText("India");
 		
+		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_street"))).sendKeys("Bangalore");
+		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_city"))).sendKeys("Bangalore");
+				
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_region"))).sendKeys("KA");
-		Thread.sleep(1000);
+		Thread.sleep(2000);
+		Driver_Config.driver.findElement(By.xpath(OR.getProperty("billing_Zcode"))).click();
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("billing_Zcode"))).sendKeys("560001");
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("billing_tphone"))).sendKeys("9876543210");
-		Thread.sleep(1000);
-		Driver_Config.driver.findElement(By.xpath(OR.getProperty("billing_fax"))).sendKeys("");
-		Thread.sleep(1000);
+		Thread.sleep(2000);
+		Driver_Config.driver.findElement(By.xpath(OR.getProperty("billing_fax"))).sendKeys("456876");
+		Thread.sleep(2000);
 		
 		
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_custPassword"))).sendKeys("adminadmin");
