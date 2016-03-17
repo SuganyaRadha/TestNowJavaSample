@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.SkipException;
@@ -58,7 +60,8 @@ public class ValidLoginTest extends TestSuiteBase
 		Driver_Config.driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("logout_link"))).click();
 		//System.out.println("ValidLoginTest is completed");
-			
+		Driver_Config.driver.manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
+		new WebDriverWait(Driver_Config.driver, 120).until(ExpectedConditions.urlContains("logoutSuccess"));	
 	}
 	@DataProvider
 	public Object[][] getTestData()

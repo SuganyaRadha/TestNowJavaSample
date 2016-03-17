@@ -64,6 +64,8 @@ public class RegisteredUser_Cheque extends TestSuiteBase
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("account_link"))).click();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("logout_link"))).click();
+		Driver_Config.driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
+		new WebDriverWait(Driver_Config.driver, 120).until(ExpectedConditions.urlContains("logoutSuccess"));
 	}
 	
 	@AfterMethod
