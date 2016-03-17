@@ -21,7 +21,7 @@ public class RegisteredUser_Credit extends TestSuiteBase
 {
 
 	@Test
-	public void RegisteredUserByCredit()
+	public void RegisteredUserByCredit() throws InterruptedException
 	{
 		
 		Driver_Config.driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
@@ -74,6 +74,7 @@ public class RegisteredUser_Credit extends TestSuiteBase
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("logout_link"))).click();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
 		new WebDriverWait(Driver_Config.driver, 120).until(ExpectedConditions.urlContains("logoutSuccess"));
+		Thread.sleep(3000);
 	}
 	
 	@AfterMethod
