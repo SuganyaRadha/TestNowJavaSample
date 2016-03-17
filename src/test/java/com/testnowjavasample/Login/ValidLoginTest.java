@@ -61,7 +61,8 @@ public class ValidLoginTest extends TestSuiteBase
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("logout_link"))).click();
 		//System.out.println("ValidLoginTest is completed");
 		Driver_Config.driver.manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
-		new WebDriverWait(Driver_Config.driver, 120).until(ExpectedConditions.urlContains("logoutSuccess"));	
+		new WebDriverWait(Driver_Config.driver, 120).until(ExpectedConditions.urlContains("logoutSuccess"));
+		
 	}
 	@DataProvider
 	public Object[][] getTestData()

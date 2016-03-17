@@ -18,7 +18,7 @@ import com.testnowjavasample.util.TestUtil;
 public class RegisteredUser extends TestSuiteBase
 {
 	@Test 
-	public void Registered_User()
+	public void Registered_User() throws InterruptedException
 	{
 		Driver_Config.driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("account_link"))).click();
@@ -54,6 +54,7 @@ public class RegisteredUser extends TestSuiteBase
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("logout_link"))).click();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		new WebDriverWait(Driver_Config.driver, 120).until(ExpectedConditions.urlContains("logoutSuccess"));
+		Thread.sleep(1000);
 	}
 	
 	@AfterMethod
