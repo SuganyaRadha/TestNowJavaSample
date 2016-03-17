@@ -77,7 +77,7 @@ public class TestSuiteBase extends TestBase{
 		
 		Driver_Config.driver.manage().timeouts().implicitlyWait(180, TimeUnit.SECONDS);
 	}
-	public static void fillBillingInfoForRegisteredUser()
+	public static void fillBillingInfoForRegisteredUser() throws InterruptedException
 	{
 		RandomString msr = new RandomString();
 		String email = msr.generateRandomString()+"@mailinator.com";
@@ -96,12 +96,19 @@ public class TestSuiteBase extends TestBase{
 		country_select.selectByVisibleText("India");
 		
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_region"))).sendKeys("KA");
-		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).sendKeys("560001");
-		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_telephone"))).sendKeys("9876543210");
+		Thread.sleep(1000);
+		Driver_Config.driver.findElement(By.xpath(OR.getProperty("billing_Zcode"))).sendKeys("560001");
+		Thread.sleep(1000);
+		Driver_Config.driver.findElement(By.xpath(OR.getProperty("billing_tphone"))).sendKeys("9876543210");
+		Thread.sleep(1000);
+		Driver_Config.driver.findElement(By.xpath(OR.getProperty("billing_fax"))).sendKeys("");
+		Thread.sleep(1000);
+		
 		
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_custPassword"))).sendKeys("adminadmin");
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_confmPassword"))).sendKeys("adminadmin");
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("billing_continue"))).click();
+		Thread.sleep(2000);
 		new WebDriverWait(Driver_Config.driver, 120).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.getProperty("shipping_continue"))));
 		Driver_Config.driver.manage().timeouts().implicitlyWait(180, TimeUnit.SECONDS);
 	}
