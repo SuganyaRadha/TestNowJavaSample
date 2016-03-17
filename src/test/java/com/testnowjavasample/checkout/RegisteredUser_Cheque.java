@@ -20,12 +20,13 @@ public class RegisteredUser_Cheque extends TestSuiteBase
 	public void RegisteredUserByCheque() throws InterruptedException
 	{
 		Driver_Config.driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-		//Driver_Config.driver.findElement(By.id(OR.getProperty("mainpage_search"))).click();
+		
 		Driver_Config.driver.findElement(By.id(OR.getProperty("mainpage_search"))).sendKeys("Samsung");
-		Driver_Config.driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+		Thread.sleep(3000);
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("mainpage_searchbutton"))).click();
+		Thread.sleep(3000);
 		Driver_Config.driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-		Driver_Config.driver.findElement(By.id(OR.getProperty("mainpage_search"))).clear();;
+		
 		new WebDriverWait(Driver_Config.driver, 120).until(ExpectedConditions.textToBePresentInElementLocated(By.tagName("h1"), "SEARCH RESULTS FOR 'SAMSUNG'"));
 		
 		
