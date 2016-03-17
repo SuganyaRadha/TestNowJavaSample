@@ -31,7 +31,7 @@ public class Driver_Config
 	{
 		String browser = getEnvVariable("BROWSER");
 		if (browser == null)
-			browser = "opera";
+			browser = "chrome";
 		//String browser = "Firefox"; 
 		if ("Firefox".equalsIgnoreCase(browser))
 		{
@@ -102,8 +102,8 @@ public class Driver_Config
 	}
 	public static void chromeDriver()
 	{
-		System.setProperty("webdriver.chrome.driver", "usr/local/bin/chromedriver");
-		//System.setProperty("webdriver.chrome.driver", "//home//kaushal//Suganya//workspace//TestNowJavaSample//Drivers//chromedriver");
+		//System.setProperty("webdriver.chrome.driver", "usr/local/bin/chromedriver");
+		System.setProperty("webdriver.chrome.driver", "//home//kaushal//Suganya//workspace//TestNowJavaSample//Drivers//chromedriver");
 		
 		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
@@ -119,7 +119,7 @@ public class Driver_Config
 		capabilities.setJavascriptEnabled(true);
 		capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
 		//capabilities.setCapability(InternetExplorerDriver.JAVASCRIPT_ENABLED, true);
-		System.setProperty("webdriver.ie.driver", "usr/local/bin/IEDriverServer");
+		System.setProperty("webdriver.ie.driver", "C:\\IEDriver\\IEDriverServer.exe");
 		driver = new InternetExplorerDriver(capabilities);
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 
