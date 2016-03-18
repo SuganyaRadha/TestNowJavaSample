@@ -31,23 +31,31 @@ public class TestSuiteBase extends TestBase{
 		
 	}
 
-	public static void fillBillingInfo()
+	public static void fillBillingInfo() throws InterruptedException
 	{
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_firstname"))).sendKeys("Opex1");
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_lastname"))).sendKeys("Opex2");
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_company"))).sendKeys("Opex");
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_email"))).sendKeys("admin@gmail.com");
+		
+		Select country_select = new Select(Driver_Config.driver.findElement(By.id(OR.getProperty("billing_country"))));
+		country_select.selectByVisibleText("India");
+		Thread.sleep(2000);
+		
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_street"))).sendKeys("Bangalore");
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_city"))).sendKeys("Bangalore");
 		//Driver_Config.driver.findElement(By.id(OR.getProperty("billing_country"))).sendKeys(country);
+		Thread.sleep(2000);
 		
-	//	WebElement country_type = Driver_Config.driver.findElement(By.id(OR.getProperty("billing_country")));
-		Select country_select = new Select(Driver_Config.driver.findElement(By.id(OR.getProperty("billing_country"))));
-		country_select.selectByVisibleText("India");
 		
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_region"))).sendKeys("KA");
+		Thread.sleep(2000);
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).sendKeys("560001");
+		Thread.sleep(2000);
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_telephone"))).sendKeys("9876543210");
+		Thread.sleep(2000);
+		Driver_Config.driver.findElement(By.xpath(OR.getProperty("billing_fax"))).sendKeys("456876");
+		Thread.sleep(2000);
 		
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("billing_continue"))).click();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(180, TimeUnit.SECONDS);
