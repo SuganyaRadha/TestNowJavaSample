@@ -102,7 +102,7 @@ public class Driver_Config
 	}
 	public static void chromeDriver()
 	{
-		System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
+		System.setProperty("webdriver.chrome.driver", "//usr//local//bin//chromedriver");
 		//System.setProperty("webdriver.chrome.driver", "//home//kaushal//Suganya//workspace//TestNowJavaSample//Drivers//chromedriver");
 		/*DesiredCapabilities capabilities = DesiredCapabilities.chrome(); 
 		capabilities.setPlatform(org.openqa.selenium.Platform.ANY);*/
@@ -116,17 +116,20 @@ public class Driver_Config
 	{
 		
 		DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
+		capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
 		capabilities.setCapability(InternetExplorerDriver.IE_ENSURE_CLEAN_SESSION, true);
 		capabilities.setCapability(InternetExplorerDriver.NATIVE_EVENTS, false);
 		capabilities.setJavascriptEnabled(true);
 		capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
-		//capabilities.setCapability(InternetExplorerDriver.JAVASCRIPT_ENABLED, true);
+		
 		System.setProperty("webdriver.ie.driver", "C:\\IEDriver\\IEDriverServer.exe");
 		driver = new InternetExplorerDriver(capabilities);
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-
-		driver.manage().window().maximize();
 		driver.manage().timeouts().pageLoadTimeout(120, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+		driver.manage().timeouts().setScriptTimeout(60, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
+		
 	}
 	public static void androidDriver()
 	{
