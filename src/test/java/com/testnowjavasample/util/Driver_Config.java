@@ -102,8 +102,10 @@ public class Driver_Config
 	}
 	public static void chromeDriver()
 	{
-		//System.setProperty("webdriver.chrome.driver", "usr/local/bin/chromedriver");
-		System.setProperty("webdriver.chrome.driver", "//home//kaushal//Suganya//workspace//TestNowJavaSample//Drivers//chromedriver");
+		System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
+		//System.setProperty("webdriver.chrome.driver", "//home//kaushal//Suganya//workspace//TestNowJavaSample//Drivers//chromedriver");
+		/*DesiredCapabilities capabilities = DesiredCapabilities.chrome(); 
+		capabilities.setPlatform(org.openqa.selenium.Platform.ANY);*/
 		
 		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
