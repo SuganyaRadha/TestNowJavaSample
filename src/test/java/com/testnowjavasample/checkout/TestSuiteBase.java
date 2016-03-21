@@ -44,14 +44,17 @@ public class TestSuiteBase extends TestBase{
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_region"))).sendKeys("KA");
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("billing_fax"))).sendKeys("456876");
 		
+		Thread.sleep(5000);
 		String zipcode = Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).getText();
 		if (zipcode == null)
 			Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).sendKeys("560001");
-			
+		
+		Thread.sleep(5000);
 		String phone  = Driver_Config.driver.findElement(By.id(OR.getProperty("billing_telephone"))).getText();
 		if (phone != "9876543210")
 			Driver_Config.driver.findElement(By.id(OR.getProperty("billing_telephone"))).sendKeys("9876543210");
 		
+		Thread.sleep(5000);
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("billing_continue"))).click();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(180, TimeUnit.SECONDS);
 		new WebDriverWait(Driver_Config.driver, 120).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.getProperty("shipping_continue"))));
@@ -101,15 +104,17 @@ public class TestSuiteBase extends TestBase{
 		
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("billing_fax"))).sendKeys("456876");
 		
+		Thread.sleep(5000);
 		String zipcode = Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).getText();
 		if (zipcode == null)
 			Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).sendKeys("560001");
-				
+		
+		Thread.sleep(5000);
 		String phone = Driver_Config.driver.findElement(By.id(OR.getProperty("billing_tphone"))).getText();
 		if (phone != "9876543210")
 			Driver_Config.driver.findElement(By.id(OR.getProperty("billing_tphone"))).sendKeys("9876543210");
 				
-				
+		Thread.sleep(5000);		
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_custPassword"))).sendKeys("adminadmin");
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_confmPassword"))).sendKeys("adminadmin");
 	
