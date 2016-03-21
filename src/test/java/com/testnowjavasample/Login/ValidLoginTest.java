@@ -32,16 +32,18 @@ public class ValidLoginTest extends TestSuiteBase
 	@Test(dataProvider="getTestData")
 	public void ValidTestData(String userName, String passwd) throws IOException
 	{
+		
 		Driver_Config.driverConfig();
-	
-		String url = Driver_Config.getEnvVariable("TEST_URL");
+		
+		/*String url = Driver_Config.getEnvVariable("TEST_URL");
 		if (url == null)
 		{
 			url = "https://104.131.191.140";
 		}
-		
-		//String url = "https://104.131.191.140";
+	
 		Driver_Config.driver.get(url);
+		*/
+		
 		Driver_Config.driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		Driver_Config.driver.manage().window().maximize();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);

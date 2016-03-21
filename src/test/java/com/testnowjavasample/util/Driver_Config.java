@@ -25,17 +25,22 @@ public class Driver_Config
 	public static String getEnvVariable(String key){
 		return System.getenv(key);
 	}
+
 	
 	//selecting the browser type and calling the corresponding functions
 	public static void driverConfig() throws IOException
 	{
 		String browser = getEnvVariable("BROWSER");
 		if (browser == null)
-			browser = "chrome";
-		//String browser = "Firefox"; 
+		{
+			browser = "Firefox";
+		}
+		
 		if ("Firefox".equalsIgnoreCase(browser))
 		{
+			
 			firefoxDriver();
+			
 		}
 		else if ("Chrome".equalsIgnoreCase(browser))
 		{
@@ -59,7 +64,7 @@ public class Driver_Config
 		}
 	
 	}
-	private static void firefoxUPA() throws IOException 
+	private static void firefoxUPA() throws IOException  
 	{
 		String UPA = getEnvVariable("UPA");
 		boolean IS_UPA;
@@ -82,6 +87,8 @@ public class Driver_Config
 			profile.setPreference("extensions.firebug.netexport.defaultFileName", "upaReport.har");
 			profile.setPreference("extensions.firebug.netexport.jsonpCallback", "jsonCallback");
 			driver = new FirefoxDriver(profile);
+			get_url();
+			
 		}
 		else
 		{
@@ -89,18 +96,23 @@ public class Driver_Config
 			driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 			driver.manage().window().maximize();
 			driver.manage().timeouts().pageLoadTimeout(120, TimeUnit.SECONDS);
+			get_url();
+			
 		}
 
 		
 	}
 	public static void firefoxDriver()
 	{
+		
 		driver = new FirefoxDriver();
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 		driver.manage().timeouts().pageLoadTimeout(120, TimeUnit.SECONDS);
+		get_url();
+		
 	}
-	public static void chromeDriver()
+	public static void chromeDriver()  
 	{
 		System.setProperty("webdriver.chrome.driver", "//usr//local//bin//chromedriver");
 		//System.setProperty("webdriver.chrome.driver", "//home//kaushal//Suganya//workspace//TestNowJavaSample//Drivers//chromedriver");
@@ -111,6 +123,8 @@ public class Driver_Config
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 		driver.manage().timeouts().pageLoadTimeout(120, TimeUnit.SECONDS);
+		get_url();
+		
 	}
 	public static void IEDriver()
 	{
@@ -129,6 +143,8 @@ public class Driver_Config
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		driver.manage().timeouts().setScriptTimeout(60, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
+		get_url();
+		driver.navigate().to("javascript:document.getElementById('overridelink').click()");driver.navigate().to("javascript:document.getElementById('overridelink').click()");
 		
 	}
 	public static void androidDriver()
@@ -137,6 +153,8 @@ public class Driver_Config
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 		driver.manage().timeouts().pageLoadTimeout(120, TimeUnit.SECONDS);
+		get_url();
+		
 	}
 	public static void android_ChromeDriver()
 	{
@@ -150,6 +168,8 @@ public class Driver_Config
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 		driver.manage().timeouts().pageLoadTimeout(120, TimeUnit.SECONDS);
+		get_url();
+		
 	}
 	public static void operaDriver() throws IOException
 	{
@@ -171,11 +191,21 @@ public class Driver_Config
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 		driver.manage().timeouts().pageLoadTimeout(120, TimeUnit.SECONDS);
+		get_url();
 		
 	}
-	public void closeBrowser()
+	public static void get_url()
 	{
-		driver.quit();
+		
+		
+		String url = Driver_Config.getEnvVariable("TEST_URL");
+		if (url == null)
+		{
+			url = "https://104.131.191.140";
+		}
+	
+		Driver_Config.driver.get(url);
 	}
+	
 	
 }
