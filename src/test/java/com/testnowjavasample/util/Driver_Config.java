@@ -33,7 +33,7 @@ public class Driver_Config
 		String browser = getEnvVariable("BROWSER");
 		if (browser == null)
 		{
-			browser = "Firefox";
+			browser = "opera";
 		}
 		
 		if ("Firefox".equalsIgnoreCase(browser))
@@ -145,6 +145,7 @@ public class Driver_Config
 		driver.manage().window().maximize();
 		get_url();
 		driver.navigate().to("javascript:document.getElementById('overridelink').click()");driver.navigate().to("javascript:document.getElementById('overridelink').click()");
+		get_url();
 		
 	}
 	public static void androidDriver()

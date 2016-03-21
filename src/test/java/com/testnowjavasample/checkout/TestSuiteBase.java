@@ -11,7 +11,6 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeSuite;
 
-
 import test.RandomString;
 
 import com.testnowjavasample.base.TestBase;
@@ -37,28 +36,21 @@ public class TestSuiteBase extends TestBase{
 		
 		Select country_select = new Select(Driver_Config.driver.findElement(By.id(OR.getProperty("billing_country"))));
 		country_select.selectByVisibleText("India");
-		Thread.sleep(2000);
-		
+				
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_street"))).sendKeys("Bangalore");
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_city"))).sendKeys("Bangalore");
 		//Driver_Config.driver.findElement(By.id(OR.getProperty("billing_country"))).sendKeys(country);
-		Thread.sleep(2000);
-		
-		
+				
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_region"))).sendKeys("KA");
-		
-		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).click();
-		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).sendKeys("560001");
-		
-		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_telephone"))).click();
-		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_telephone"))).sendKeys("9876543210");
-		
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("billing_fax"))).sendKeys("456876");
-		
 		
 		String zipcode = Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).getText();
 		if (zipcode == null)
 			Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).sendKeys("560001");
+			
+		String phone  = Driver_Config.driver.findElement(By.id(OR.getProperty("billing_telephone"))).getText();
+		if (phone != "9876543210")
+			Driver_Config.driver.findElement(By.id(OR.getProperty("billing_telephone"))).sendKeys("9876543210");
 		
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("billing_continue"))).click();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(180, TimeUnit.SECONDS);
@@ -107,25 +99,20 @@ public class TestSuiteBase extends TestBase{
 				
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_region"))).sendKeys("KA");
 		
-		Driver_Config.driver.findElement(By.xpath(OR.getProperty("billing_Zcode"))).click();
-		Driver_Config.driver.findElement(By.xpath(OR.getProperty("billing_Zcode"))).sendKeys("560001");
-		
-		Driver_Config.driver.findElement(By.xpath(OR.getProperty("billing_tphone"))).click();;
-		Driver_Config.driver.findElement(By.xpath(OR.getProperty("billing_tphone"))).sendKeys("9876543210");
-		
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("billing_fax"))).sendKeys("456876");
-		
-		
-		
-		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_custPassword"))).sendKeys("adminadmin");
-		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_confmPassword"))).sendKeys("adminadmin");
-		
 		
 		String zipcode = Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).getText();
 		if (zipcode == null)
 			Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).sendKeys("560001");
-		Thread.sleep(2000);
-		
+				
+		String phone = Driver_Config.driver.findElement(By.id(OR.getProperty("billing_tphone"))).getText();
+		if (phone != "9876543210")
+			Driver_Config.driver.findElement(By.id(OR.getProperty("billing_tphone"))).sendKeys("9876543210");
+				
+				
+		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_custPassword"))).sendKeys("adminadmin");
+		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_confmPassword"))).sendKeys("adminadmin");
+	
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("billing_continue"))).click();
 		Thread.sleep(2000);
 		new WebDriverWait(Driver_Config.driver, 120).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.getProperty("shipping_continue"))));

@@ -22,7 +22,8 @@ public class RegisteredUser_COD extends TestSuiteBase
 	public void RegisteredUserByCOD() throws InterruptedException
 	{
 		Driver_Config.driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-		Thread.sleep(3000);
+		
+		Driver_Config.driver.findElement(By.id(OR.getProperty("mainpage_search"))).click();
 		Driver_Config.driver.findElement(By.id(OR.getProperty("mainpage_search"))).sendKeys("Samsung");
 		Thread.sleep(3000);
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("mainpage_searchbutton"))).click();
@@ -68,7 +69,7 @@ public class RegisteredUser_COD extends TestSuiteBase
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("logout_link"))).click();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
 		new WebDriverWait(Driver_Config.driver, 120).until(ExpectedConditions.urlContains("logoutSuccess"));
-		Thread.sleep(3000);
+		Thread.sleep(1000);
 	}
 	
 	@AfterMethod
