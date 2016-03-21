@@ -46,15 +46,15 @@ public class TestSuiteBase extends TestBase{
 		
 		
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_region"))).sendKeys("KA");
-		Thread.sleep(2000);
+		
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).click();
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).sendKeys("560001");
-		Thread.sleep(2000);
+		
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_telephone"))).click();
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_telephone"))).sendKeys("9876543210");
-		Thread.sleep(5000);
+		
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("billing_fax"))).sendKeys("456876");
-		Thread.sleep(2000);
+		
 		
 		String zipcode = Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).getText();
 		if (zipcode == null)
@@ -106,20 +106,20 @@ public class TestSuiteBase extends TestBase{
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_city"))).sendKeys("Bangalore");
 				
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_region"))).sendKeys("KA");
-		Thread.sleep(2000);
+		
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("billing_Zcode"))).click();
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("billing_Zcode"))).sendKeys("560001");
-		Thread.sleep(2000);
+		
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("billing_tphone"))).click();;
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("billing_tphone"))).sendKeys("9876543210");
-		Thread.sleep(5000);
+		
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("billing_fax"))).sendKeys("456876");
-		Thread.sleep(3000);
+		
 		
 		
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_custPassword"))).sendKeys("adminadmin");
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_confmPassword"))).sendKeys("adminadmin");
-		Thread.sleep(2000);
+		
 		
 		String zipcode = Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).getText();
 		if (zipcode == null)
