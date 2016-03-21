@@ -42,16 +42,17 @@ public class TestSuiteBase extends TestBase{
 		//Driver_Config.driver.findElement(By.id(OR.getProperty("billing_country"))).sendKeys(country);
 				
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_region"))).sendKeys("KA");
-	
-		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_telephone"))).sendKeys("9876543210");
-		Driver_Config.driver.findElement(By.xpath(OR.getProperty("billing_continue"))).click();
-		
 		Thread.sleep(5000);
+		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_telephone"))).sendKeys("9876543210");
+		
+		Thread.sleep(8000);
+		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).click();
+		Thread.sleep(8000);
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).sendKeys("560001");
-		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).sendKeys("560001");
-		String zipcode = Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).getText();
+
+		/*String zipcode = Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).getText();
 		if (zipcode == null)
-			Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).sendKeys("560001");
+			Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).sendKeys("561");*/
 		
 		
 		Thread.sleep(5000);
@@ -103,18 +104,13 @@ public class TestSuiteBase extends TestBase{
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_region"))).sendKeys("KA");
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_tphone"))).sendKeys("9876543210");
 		
-		Driver_Config.driver.findElement(By.xpath(OR.getProperty("billing_continue"))).click();
 		
-		Thread.sleep(5000);
+		Thread.sleep(8000);
+		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).click();
+		Thread.sleep(8000);	
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).sendKeys("560001");
-		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).sendKeys("560001");
-		String zipcode = Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).getText();
-		if (zipcode == null)
-			Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).sendKeys("560001");
 		
-		Thread.sleep(5000);
-		
-		Thread.sleep(5000);		
+		Thread.sleep(8000);		
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_custPassword"))).sendKeys("adminadmin");
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_confmPassword"))).sendKeys("adminadmin");
 	
