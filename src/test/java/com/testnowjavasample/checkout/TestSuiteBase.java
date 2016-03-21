@@ -44,6 +44,8 @@ public class TestSuiteBase extends TestBase{
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_region"))).sendKeys("KA");
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("billing_fax"))).sendKeys("456876");
 		
+		Driver_Config.driver.findElement(By.xpath(OR.getProperty("billing_continue"))).click();
+		
 		Thread.sleep(5000);
 		String zipcode = Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).getText();
 		if (zipcode == null)
@@ -103,6 +105,7 @@ public class TestSuiteBase extends TestBase{
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_region"))).sendKeys("KA");
 		
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("billing_fax"))).sendKeys("456876");
+		Driver_Config.driver.findElement(By.xpath(OR.getProperty("billing_continue"))).click();
 		
 		Thread.sleep(5000);
 		String zipcode = Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).getText();
