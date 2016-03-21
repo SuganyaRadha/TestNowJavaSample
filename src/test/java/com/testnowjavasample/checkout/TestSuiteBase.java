@@ -6,14 +6,11 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.SkipException;
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeTest;
+
 
 import test.RandomString;
 
@@ -50,10 +47,12 @@ public class TestSuiteBase extends TestBase{
 		
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_region"))).sendKeys("KA");
 		Thread.sleep(2000);
+		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).click();
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).sendKeys("560001");
 		Thread.sleep(2000);
+		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_telephone"))).click();
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_telephone"))).sendKeys("9876543210");
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("billing_fax"))).sendKeys("456876");
 		Thread.sleep(2000);
 		
@@ -111,10 +110,11 @@ public class TestSuiteBase extends TestBase{
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("billing_Zcode"))).click();
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("billing_Zcode"))).sendKeys("560001");
 		Thread.sleep(2000);
+		Driver_Config.driver.findElement(By.xpath(OR.getProperty("billing_tphone"))).click();;
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("billing_tphone"))).sendKeys("9876543210");
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("billing_fax"))).sendKeys("456876");
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 		
 		
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_custPassword"))).sendKeys("adminadmin");
@@ -159,9 +159,6 @@ public class TestSuiteBase extends TestBase{
 		Driver_Config.driver.findElement(By.xpath("//ul[contains(@class,'products-grid')]/li["+product_index+"]//button")).click();		
 	}
 	
-	@AfterSuite
-	public void teardown()
-	{
-		Driver_Config.driver.quit();
-	}
+	
+	
 }

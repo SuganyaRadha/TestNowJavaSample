@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
 import com.testnowjavasample.util.Driver_Config;
@@ -79,6 +80,12 @@ public class RegisteredUser_Cheque extends TestSuiteBase
          
 		 }
 	  }
+	
+	@AfterTest
+	public void teardown()
+	{
+		Driver_Config.driver.quit();
+	}
 	
 	
 }
