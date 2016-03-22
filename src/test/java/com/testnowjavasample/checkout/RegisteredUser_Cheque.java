@@ -10,6 +10,7 @@ import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import com.testnowjavasample.util.Driver_Config;
@@ -17,6 +18,13 @@ import com.testnowjavasample.util.TestUtil;
 
 public class RegisteredUser_Cheque extends TestSuiteBase
 {
+	
+	@BeforeTest
+	public void openBrowser() throws IOException
+	{
+		Driver_Config.driverConfig();
+	}
+	
 	@Test
 	public void RegisteredUserByCheque() throws InterruptedException
 	{

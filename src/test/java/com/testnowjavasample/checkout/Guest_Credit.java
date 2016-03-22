@@ -11,6 +11,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -20,6 +22,13 @@ import com.testnowjavasample.util.TestUtil;
 
 public class Guest_Credit extends TestSuiteBase 
 {
+	
+	@BeforeTest
+	public void openBrowser() throws IOException
+	{
+		Driver_Config.driverConfig();
+	}
+	
 	@Test
 	public void GuestByCredit() throws Throwable
 	{
@@ -84,6 +93,11 @@ public class Guest_Credit extends TestSuiteBase
                
          }
 	  }
-
+	
+	@AfterTest
+	public void teardown()
+	{
+		Driver_Config.driver.close();
+	}
 	
 }

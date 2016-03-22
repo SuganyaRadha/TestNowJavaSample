@@ -17,6 +17,7 @@ import com.testnowjavasample.util.TestUtil;
 
 public class LoginTestWithoutCredentials extends TestSuiteBase
 {
+	
 	@Test
 	public void LoginTest_WO_Credentials() throws IOException
 	{

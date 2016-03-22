@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
 import com.testnowjavasample.Login.TestSuiteBase;
@@ -48,4 +49,10 @@ public class GuestUser extends TestSuiteBase
        
 		 }
 	  }
+	
+	@AfterTest
+	public void teardown()
+	{
+		Driver_Config.driver.quit();
+	}
 }

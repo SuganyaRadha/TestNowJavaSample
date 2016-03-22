@@ -8,6 +8,7 @@ import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.SkipException;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -57,4 +58,9 @@ public class RegisteringWithExistingUserName extends TestSuiteBase
      
 		 }
 	  }
+	@AfterTest
+	public void teardown()
+	{
+		Driver_Config.driver.close();
+	}
 }

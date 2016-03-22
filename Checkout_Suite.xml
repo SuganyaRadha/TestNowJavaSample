@@ -1,7 +1,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Checkout Suite">
 
-
 <test name="Guest_Credit">
     <classes>
         <class name="com.testnowjavasample.checkout.Guest_Credit" ></class>  
@@ -19,6 +18,7 @@
         <class name="com.testnowjavasample.checkout.Guest_Cheque" ></class>  
     </classes>
 </test>
+
 
 <test name="RegisteredUser_Credit">
     <classes>

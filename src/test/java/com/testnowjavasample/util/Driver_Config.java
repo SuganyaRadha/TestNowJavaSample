@@ -194,6 +194,7 @@ public class Driver_Config
 		driver.manage().timeouts().pageLoadTimeout(120, TimeUnit.SECONDS);
 		get_url();
 		
+		
 	}
 	public static void get_url()
 	{

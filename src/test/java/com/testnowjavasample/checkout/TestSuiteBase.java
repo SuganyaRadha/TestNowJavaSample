@@ -39,23 +39,17 @@ public class TestSuiteBase extends TestBase{
 				
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_street"))).sendKeys("Bangalore");
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_city"))).sendKeys("Bangalore");
-		//Driver_Config.driver.findElement(By.id(OR.getProperty("billing_country"))).sendKeys(country);
 				
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_region"))).sendKeys("KA");
-		Thread.sleep(5000);
-		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_telephone"))).sendKeys("9876543210");
 		
-		Thread.sleep(8000);
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).click();
-		Thread.sleep(8000);
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).sendKeys("560001");
+		Driver_Config.driver.manage().timeouts().implicitlyWait(180, TimeUnit.SECONDS);
 
-		/*String zipcode = Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).getText();
-		if (zipcode == null)
-			Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).sendKeys("561");*/
+		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_telephone"))).click();
+		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_telephone"))).sendKeys("9876543210");
+		Driver_Config.driver.manage().timeouts().implicitlyWait(180, TimeUnit.SECONDS);
 		
-		
-		Thread.sleep(5000);
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("billing_continue"))).click();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(180, TimeUnit.SECONDS);
 		new WebDriverWait(Driver_Config.driver, 120).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.getProperty("shipping_continue"))));
@@ -102,20 +96,21 @@ public class TestSuiteBase extends TestBase{
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_city"))).sendKeys("Bangalore");
 				
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_region"))).sendKeys("KA");
-		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_tphone"))).sendKeys("9876543210");
 		
-		
-		Thread.sleep(8000);
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).click();
-		Thread.sleep(8000);	
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).sendKeys("560001");
+		Driver_Config.driver.manage().timeouts().implicitlyWait(180, TimeUnit.SECONDS);
 		
-		Thread.sleep(8000);		
+		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_telephone"))).click();
+		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_telephone"))).sendKeys("9876543210");
+		
+		Driver_Config.driver.manage().timeouts().implicitlyWait(180, TimeUnit.SECONDS);
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_custPassword"))).sendKeys("adminadmin");
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_confmPassword"))).sendKeys("adminadmin");
 	
+		Driver_Config.driver.manage().timeouts().implicitlyWait(180, TimeUnit.SECONDS);
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("billing_continue"))).click();
-		Thread.sleep(2000);
+
 		new WebDriverWait(Driver_Config.driver, 120).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.getProperty("shipping_continue"))));
 		Driver_Config.driver.manage().timeouts().implicitlyWait(180, TimeUnit.SECONDS);
 	}
@@ -147,6 +142,28 @@ public class TestSuiteBase extends TestBase{
 		Driver_Config.driver.findElement(By.xpath("//ul[contains(@class,'products-grid')]/li["+product_index+"]//button")).click();		
 	}
 	
-	
+	public static void register_newUser(String firstname, String lastname, String passwd) throws InterruptedException
+	{
+		RandomString msr = new RandomString();
+		String email = msr.generateRandomString()+"@mailinator.com";
+		
+		Driver_Config.driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		Driver_Config.driver.findElement(By.xpath(OR.getProperty("account_link"))).click();
+		Driver_Config.driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		Driver_Config.driver.findElement(By.xpath(OR.getProperty("register_link"))).click();
+		Driver_Config.driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		
+		Driver_Config.driver.findElement(By.id(OR.getProperty("register_newfirstname"))).sendKeys(firstname);
+		Driver_Config.driver.findElement(By.id(OR.getProperty("register_newlastname"))).sendKeys(lastname);
+		Driver_Config.driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		Driver_Config.driver.findElement(By.id(OR.getProperty("register_newemail"))).sendKeys(email);
+		Driver_Config.driver.findElement(By.id(OR.getProperty("register_password"))).sendKeys(passwd);
+		Driver_Config.driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		Driver_Config.driver.findElement(By.id(OR.getProperty("register_confirmpassword"))).sendKeys(passwd);
+		Driver_Config.driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		Driver_Config.driver.findElement(By.xpath(OR.getProperty("register_button"))).click();
+		Driver_Config.driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
+	}
+
 	
 }

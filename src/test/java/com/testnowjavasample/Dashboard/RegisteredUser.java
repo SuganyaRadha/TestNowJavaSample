@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import com.testnowjavasample.Login.TestSuiteBase;
@@ -17,6 +18,12 @@ import com.testnowjavasample.util.TestUtil;
 
 public class RegisteredUser extends TestSuiteBase
 {
+	@BeforeTest
+	public void openBrowser() throws IOException
+	{
+		Driver_Config.driverConfig();
+	}
+	
 	@Test 
 	public void Registered_User() throws InterruptedException
 	{

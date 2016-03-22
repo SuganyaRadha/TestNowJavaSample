@@ -10,6 +10,7 @@ import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.SkipException;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -21,28 +22,15 @@ public class ValidLoginTest extends TestSuiteBase
 {
 	String runmode[]=null;
 	
-	/*@BeforeTest
-	public void checkTestSkip()
+	@BeforeTest
+	public void openBrowser() throws IOException
 	{
-		if(!testUtil.isTestCaseRunnable(LoginSuite, this.getClass().getSimpleName()))
-		{
-			throw new SkipException("Runmode of ValidLoginTest case is set to No and hence skipping this test case");
-		}
-	}*/
+		Driver_Config.driverConfig();
+	}
+	
 	@Test(dataProvider="getTestData")
 	public void ValidTestData(String userName, String passwd) throws IOException
 	{
-		
-		Driver_Config.driverConfig();
-		
-		/*String url = Driver_Config.getEnvVariable("TEST_URL");
-		if (url == null)
-		{
-			url = "https://104.131.191.140";
-		}
-	
-		Driver_Config.driver.get(url);
-		*/
 		
 		Driver_Config.driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		Driver_Config.driver.manage().window().maximize();
@@ -83,4 +71,6 @@ public class ValidLoginTest extends TestSuiteBase
      
 		 }
 	  }
+	
+	
 }
