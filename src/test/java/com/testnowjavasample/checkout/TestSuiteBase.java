@@ -43,10 +43,12 @@ public class TestSuiteBase extends TestBase{
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_region"))).sendKeys("KA");
 		
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).click();
+		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).clear();
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).sendKeys("560001");
 		Driver_Config.driver.manage().timeouts().implicitlyWait(180, TimeUnit.SECONDS);
 
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_telephone"))).click();
+		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_telephone"))).clear();
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_telephone"))).sendKeys("9876543210");
 		Driver_Config.driver.manage().timeouts().implicitlyWait(180, TimeUnit.SECONDS);
 		
@@ -98,10 +100,12 @@ public class TestSuiteBase extends TestBase{
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_region"))).sendKeys("KA");
 		
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).click();
+		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).clear();
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).sendKeys("560001");
 		Driver_Config.driver.manage().timeouts().implicitlyWait(180, TimeUnit.SECONDS);
 		
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_telephone"))).click();
+		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_telephone"))).clear();
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_telephone"))).sendKeys("9876543210");
 		
 		Driver_Config.driver.manage().timeouts().implicitlyWait(180, TimeUnit.SECONDS);
