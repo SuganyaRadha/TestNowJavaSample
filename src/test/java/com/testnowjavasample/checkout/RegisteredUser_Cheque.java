@@ -94,7 +94,6 @@ public class RegisteredUser_Cheque extends TestSuiteBase
 	{
 		Driver_Config.driver.close();
 		Driver_Config.driver.quit();
-		System.exit(0);
 	}
 	
 	
