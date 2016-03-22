@@ -145,7 +145,7 @@ public class Driver_Config
 		driver.manage().window().maximize();
 		get_url();
 		driver.navigate().to("javascript:document.getElementById('overridelink').click()");
-		get_url();
+		
 		
 	}
 	public static void androidDriver()
