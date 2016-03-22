@@ -144,7 +144,7 @@ public class Driver_Config
 		driver.manage().timeouts().setScriptTimeout(60, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 		get_url();
-		driver.navigate().to("javascript:document.getElementById('overridelink').click()");driver.navigate().to("javascript:document.getElementById('overridelink').click()");
+		driver.navigate().to("javascript:document.getElementById('overridelink').click()");
 		get_url();
 		
 	}
