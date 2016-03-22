@@ -187,8 +187,8 @@ public class Driver_Config
 		service.start();			
 		driver = new RemoteWebDriver(service.getUrl(),capabilities);
 		
-		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
-		OperaDriver driver = new OperaDriver(capabilities);
+	//	capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+	//	OperaDriver driver = new OperaDriver(capabilities);
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 		driver.manage().timeouts().pageLoadTimeout(120, TimeUnit.SECONDS);

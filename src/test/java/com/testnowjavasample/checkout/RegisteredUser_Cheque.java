@@ -92,7 +92,9 @@ public class RegisteredUser_Cheque extends TestSuiteBase
 	@AfterTest
 	public void teardown()
 	{
+		Driver_Config.driver.close();
 		Driver_Config.driver.quit();
+		System.exit(0);
 	}
 	
 	
