@@ -46,7 +46,7 @@ public class TestSuiteBase extends TestBase{
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).clear();
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).sendKeys("560001");
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).clear();
-		Driver_Config.driver.findElement(By.name("billing[postcode]")).sendKeys("459");
+		Driver_Config.driver.findElement(By.name("billing[postcode]")).sendKeys("560001");
 		Driver_Config.driver.manage().timeouts().implicitlyWait(180, TimeUnit.SECONDS);
 
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_telephone"))).click();
@@ -105,7 +105,7 @@ public class TestSuiteBase extends TestBase{
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).clear();
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).sendKeys("560001");
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).clear();
-		Driver_Config.driver.findElement(By.name("billing[postcode]")).sendKeys("459");
+		Driver_Config.driver.findElement(By.name("billing[postcode]")).sendKeys("560001");
 		Driver_Config.driver.manage().timeouts().implicitlyWait(180, TimeUnit.SECONDS);
 		
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_telephone"))).click();

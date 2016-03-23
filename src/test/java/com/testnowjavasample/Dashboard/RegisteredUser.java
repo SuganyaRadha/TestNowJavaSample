@@ -66,7 +66,8 @@ public class RegisteredUser extends TestSuiteBase
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("logout_link"))).click();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		new WebDriverWait(Driver_Config.driver, 120).until(ExpectedConditions.urlContains("logoutSuccess"));
-		Thread.sleep(3000);
+		new WebDriverWait(Driver_Config.driver, 120).until(ExpectedConditions.urlMatches("http://104.131.191.140/"));
+		
 	}
 	
 	@AfterMethod
