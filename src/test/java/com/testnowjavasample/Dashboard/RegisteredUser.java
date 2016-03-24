@@ -45,7 +45,7 @@ public class RegisteredUser extends TestSuiteBase
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("save_subscription"))).click();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
 		new WebDriverWait(Driver_Config.driver, 120).until(ExpectedConditions.urlContains("customer/account/"));
-		//new WebDriverWait(Driver_Config.driver, 120).until(ExpectedConditions.textToBePresentInElementLocated(By.xpath(".//*[@id='top']/body/div[1]/div/div[2]/div/div[2]/div/div/ul/li/ul/li/span"), "The subscription has been saved."));
+		
 		Assert.assertTrue(Driver_Config.driver.getPageSource().contains("The subscription has been saved."), "Enabling Newsletter subscription is not successful with Registered user");
 		
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("newseditlink_dashboard"))).click();
