@@ -37,19 +37,16 @@ public class RegisteredUser_COD extends TestSuiteBase
 	
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("mainpage_searchbutton"))).click();
 		
-		Driver_Config.driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-		
 		new WebDriverWait(Driver_Config.driver, 120).until(ExpectedConditions.textToBePresentInElementLocated(By.tagName("h1"), "SEARCH RESULTS FOR 'SAMSUNG'"));
 		
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("product_selectimage"))).click();
-		Driver_Config.driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("addtocart_buttonclick1"))).click();
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("proceed_checkout"))).click();
-		Driver_Config.driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+		Driver_Config.driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		Driver_Config.driver.findElement(By.id(OR.getProperty("checkout_registeredUser"))).click();
 		Driver_Config.driver.findElement(By.id(OR.getProperty("continue_mainpage"))).click();
-		Driver_Config.driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+		Driver_Config.driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		
 		com.testnowjavasample.checkout.TestSuiteBase.fillBillingInfoForRegisteredUser();
 		
