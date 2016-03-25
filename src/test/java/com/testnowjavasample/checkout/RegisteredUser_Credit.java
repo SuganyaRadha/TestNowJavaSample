@@ -43,7 +43,8 @@ public class RegisteredUser_Credit extends TestSuiteBase
 		new WebDriverWait(Driver_Config.driver, 120).until(ExpectedConditions.textToBePresentInElementLocated(By.tagName("h1"), "SEARCH RESULTS FOR 'SAMSUNG'"));
 		
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("product_selectimage"))).click();
-		Driver_Config.driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+		Driver_Config.driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
+		new WebDriverWait(Driver_Config.driver, 120).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.getProperty("addtocart_buttonclick1"))));
 		
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("addtocart_buttonclick1"))).click();
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("proceed_checkout"))).click();
