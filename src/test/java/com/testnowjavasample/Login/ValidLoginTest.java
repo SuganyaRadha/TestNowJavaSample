@@ -48,10 +48,9 @@ public class ValidLoginTest extends TestSuiteBase
 		Assert.assertTrue(Driver_Config.driver.getPageSource().contains("My Dashboard"), "Login is not Successful");
 		
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("account_link"))).click();
-		Driver_Config.driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		Driver_Config.driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("logout_link"))).click();
-		//System.out.println("ValidLoginTest is completed");
-		Driver_Config.driver.manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
+	
 		new WebDriverWait(Driver_Config.driver, 120).until(ExpectedConditions.urlContains("logoutSuccess"));
 		
 	}
