@@ -3,9 +3,9 @@
  	
  	<suite-files>
    		
-   		<suite-file path="./Login_Suite.xml" />
+   		
    		<suite-file path="./Dashboard_Suite.xml" />
-   		<suite-file path="./Checkout_Suite.xml" />
+   		
    		
   	</suite-files>
 </suite>

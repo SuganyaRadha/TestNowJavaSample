@@ -39,8 +39,8 @@ public class GuestUser extends TestSuiteBase
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("clicksubscription_mainpage"))).click();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
 		Thread.sleep(3000);
-		
-		Assert.assertTrue(Driver_Config.driver.getPageSource().contains("There was a problem with the subscription: This email address is already assigned to another user."), "Newsletter subscription with registered username in main page is not successful");
+		String regUser_Message=".//*[@id='top']/body/div[1]/div/div[2]/div/div[1]/ul/li/ul/li/span";
+		Assert.assertTrue(Driver_Config.driver.findElement(By.xpath(regUser_Message)).isDisplayed(), "Newsletter subscription with registered username in main page is not successful");
 						
 	}
 	
