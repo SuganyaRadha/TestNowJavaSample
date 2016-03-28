@@ -78,6 +78,11 @@
 		<version>2.52.0</version>
 	</dependency>
 	<dependency>
+	<groupId>com.opera</groupId>
+	<artifactId>operadriver</artifactId>
+	<version>1.5</version>
+</dependency>
+	<dependency>
 		<groupId>net.sf.xsltmp</groupId>
 		<artifactId>xslt-generator-maven-plugin</artifactId>
 		<version>1.8</version>
