@@ -92,6 +92,8 @@ public class TestSuiteBase extends TestBase{
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_lastname"))).sendKeys("Opex2");
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_company"))).sendKeys("Opex");
 		Driver_Config.driver.findElement(By.cssSelector(OR.getProperty("billing_email"))).sendKeys(email);
+		Driver_Config.driver.manage().timeouts().implicitlyWait(180, TimeUnit.SECONDS);
+		Thread.sleep(3000);
 		
 		Select country_select = new Select(Driver_Config.driver.findElement(By.id(OR.getProperty("billing_country"))));
 		System.out.println(country_select.getFirstSelectedOption());

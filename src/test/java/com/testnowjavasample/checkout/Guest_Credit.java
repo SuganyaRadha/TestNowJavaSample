@@ -46,7 +46,9 @@ public class Guest_Credit extends TestSuiteBase
 		//com.testnowjavasample.checkout.TestSuiteBase.addToCart(run_index);
 		
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("product_selectimage"))).click();
-		Driver_Config.driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+		Driver_Config.driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
+		new WebDriverWait(Driver_Config.driver, 120).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(OR.getProperty("addtocart_buttonclick1"))));
+		Driver_Config.driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
 		
 		Driver_Config.driver.findElement(By.cssSelector(OR.getProperty("addtocart_buttonclick1"))).click();
 		
