@@ -32,7 +32,7 @@ public class TestSuiteBase extends TestBase{
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_firstname"))).sendKeys("Opex1");
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_lastname"))).sendKeys("Opex2");
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_company"))).sendKeys("Opex");
-		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_email"))).sendKeys("admin@gmail.com");
+		Driver_Config.driver.findElement(By.cssSelector(OR.getProperty("billing_email"))).sendKeys("admin@gmail.com");
 		
 		Select country_select = new Select(Driver_Config.driver.findElement(By.id(OR.getProperty("billing_country"))));
 		country_select.selectByVisibleText("India");
@@ -42,11 +42,12 @@ public class TestSuiteBase extends TestBase{
 				
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_region"))).sendKeys("KA");
 		
-		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).click();
-		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).clear();
-		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).sendKeys("560001");
-		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).clear();
-		Driver_Config.driver.findElement(By.name("billing[postcode]")).sendKeys("459");
+		Driver_Config.driver.findElement(By.cssSelector(OR.getProperty("billing_zipcode"))).click();
+		Driver_Config.driver.findElement(By.cssSelector(OR.getProperty("billing_zipcode"))).clear();
+		Driver_Config.driver.findElement(By.cssSelector(OR.getProperty("billing_zipcode"))).sendKeys("560001");
+		Driver_Config.driver.findElement(By.cssSelector(OR.getProperty("billing_zipcode"))).clear();
+		Driver_Config.driver.findElement(By.cssSelector(OR.getProperty("billing_zipcode"))).sendKeys("459");
+		//Driver_Config.driver.findElement(By.name("billing[postcode]")).sendKeys("459");
 		Driver_Config.driver.manage().timeouts().implicitlyWait(180, TimeUnit.SECONDS);
 
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_telephone"))).click();
@@ -90,7 +91,7 @@ public class TestSuiteBase extends TestBase{
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_firstname"))).sendKeys("Opex1");
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_lastname"))).sendKeys("Opex2");
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_company"))).sendKeys("Opex");
-		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_email"))).sendKeys(email);
+		Driver_Config.driver.findElement(By.cssSelector(OR.getProperty("billing_email"))).sendKeys(email);
 		
 		Select country_select = new Select(Driver_Config.driver.findElement(By.id(OR.getProperty("billing_country"))));
 		System.out.println(country_select.getFirstSelectedOption());
@@ -101,11 +102,12 @@ public class TestSuiteBase extends TestBase{
 				
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_region"))).sendKeys("KA");
 		
-		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).click();
-		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).clear();
-		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).sendKeys("560001");
-		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_zipcode"))).clear();
-		Driver_Config.driver.findElement(By.name("billing[postcode]")).sendKeys("459");
+		Driver_Config.driver.findElement(By.cssSelector(OR.getProperty("billing_zipcode"))).click();
+		Driver_Config.driver.findElement(By.cssSelector(OR.getProperty("billing_zipcode"))).clear();
+		Driver_Config.driver.findElement(By.cssSelector(OR.getProperty("billing_zipcode"))).sendKeys("560001");
+		Driver_Config.driver.findElement(By.cssSelector(OR.getProperty("billing_zipcode"))).clear();
+		Driver_Config.driver.findElement(By.cssSelector(OR.getProperty("billing_zipcode"))).sendKeys("459");
+		//Driver_Config.driver.findElement(By.name("billing[postcode]")).sendKeys("459");
 		Driver_Config.driver.manage().timeouts().implicitlyWait(180, TimeUnit.SECONDS);
 		
 		Driver_Config.driver.findElement(By.id(OR.getProperty("billing_telephone"))).click();

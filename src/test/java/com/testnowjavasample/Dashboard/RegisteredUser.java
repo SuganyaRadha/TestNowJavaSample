@@ -38,7 +38,7 @@ public class RegisteredUser extends TestSuiteBase
 		Driver_Config.driver.findElement(By.id(OR.getProperty("login_button"))).click();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		
-		Driver_Config.driver.findElement(By.xpath(OR.getProperty("newseditlink_dashboard"))).click();
+		Driver_Config.driver.findElement(By.cssSelector(OR.getProperty("newseditlink_dashboard"))).click();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		Driver_Config.driver.findElement(By.id(OR.getProperty("check_subscription"))).click();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
@@ -49,7 +49,7 @@ public class RegisteredUser extends TestSuiteBase
 		String newsSubscription = ".//*[@id='top']/body/div[1]/div/div[2]/div/div[2]/div/div/ul/li/ul/li/span";
 		Assert.assertTrue(Driver_Config.driver.findElement(By.xpath(newsSubscription)).isDisplayed(), "Enabling Newsletter subscription is not successful with Registered user");
 		
-		Driver_Config.driver.findElement(By.xpath(OR.getProperty("newseditlink_dashboard"))).click();
+		Driver_Config.driver.findElement(By.cssSelector(OR.getProperty("newseditlink_dashboard"))).click();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		Driver_Config.driver.findElement(By.id(OR.getProperty("check_subscription"))).click();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);

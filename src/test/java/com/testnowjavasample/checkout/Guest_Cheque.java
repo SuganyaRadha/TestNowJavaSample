@@ -41,8 +41,8 @@ public class Guest_Cheque extends TestSuiteBase
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("product_selectimage"))).click();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		
-		Driver_Config.driver.findElement(By.xpath(OR.getProperty("addtocart_buttonclick1"))).click();
-		Driver_Config.driver.findElement(By.xpath(OR.getProperty("proceed_checkout"))).click();
+		Driver_Config.driver.findElement(By.cssSelector(OR.getProperty("addtocart_buttonclick1"))).click();
+		Driver_Config.driver.findElement(By.cssSelector(OR.getProperty("proceed_checkout"))).click();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		Driver_Config.driver.findElement(By.id(OR.getProperty("checkout_guest"))).click();
 		Driver_Config.driver.findElement(By.id(OR.getProperty("continue_mainpage"))).click();

@@ -35,7 +35,9 @@ public class InvalidLoginTest extends TestSuiteBase
 		Driver_Config.driver.findElement(By.id(OR.getProperty("password_object"))).sendKeys(passwd);
 		Driver_Config.driver.findElement(By.id(OR.getProperty("login_button"))).click();
 		
-		Assert.assertTrue(Driver_Config.driver.getPageSource().contains("Invalid login or password"), "Login Test with invalid credentials is not successful");
+		String invalidmessage = Driver_Config.driver.findElement(By.cssSelector("li.error-msg span")).getText();
+		String invalid_msg="Invalid login or password.";
+		Assert.assertTrue(invalidmessage.equalsIgnoreCase(invalid_msg), "Login Test with invalid credentials is not successful");
 				
 		Driver_Config.driver.findElement(By.id(OR.getProperty("username_object"))).clear();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);

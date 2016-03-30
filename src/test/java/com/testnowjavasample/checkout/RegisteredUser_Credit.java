@@ -44,10 +44,10 @@ public class RegisteredUser_Credit extends TestSuiteBase
 		
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("product_selectimage"))).click();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
-		new WebDriverWait(Driver_Config.driver, 120).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.getProperty("addtocart_buttonclick1"))));
+		new WebDriverWait(Driver_Config.driver, 120).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(OR.getProperty("addtocart_buttonclick1"))));
 		
-		Driver_Config.driver.findElement(By.xpath(OR.getProperty("addtocart_buttonclick1"))).click();
-		Driver_Config.driver.findElement(By.xpath(OR.getProperty("proceed_checkout"))).click();
+		Driver_Config.driver.findElement(By.cssSelector(OR.getProperty("addtocart_buttonclick1"))).click();
+		Driver_Config.driver.findElement(By.cssSelector(OR.getProperty("proceed_checkout"))).click();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		Driver_Config.driver.findElement(By.id(OR.getProperty("checkout_registeredUser"))).click();
 		Driver_Config.driver.findElement(By.id(OR.getProperty("continue_mainpage"))).click();

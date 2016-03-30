@@ -45,8 +45,8 @@ public class ValidLoginTest extends TestSuiteBase
 		Driver_Config.driver.findElement(By.id(OR.getProperty("login_button"))).click();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
 		
-		String mydash_message="div.dashboard h1";
-		Assert.assertTrue(Driver_Config.driver.findElement(By.cssSelector(mydash_message)).isDisplayed(), "Login is not Successful");
+		//String mydash_message="div.dashboard h1";
+		Assert.assertTrue(Driver_Config.driver.findElement(By.cssSelector("div.dashboard h1")).isDisplayed(), "Login is not Successful");
 		
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("account_link"))).click();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);

@@ -44,7 +44,9 @@ public class RegisteringWithNewUserName extends TestSuiteBase
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("register_button"))).click();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
 		
-		Assert.assertTrue(Driver_Config.driver.getPageSource().contains("Thank you for registering with Main Website Store."), "Registeration with new username is not successful");
+		String successMessage=Driver_Config.driver.findElement(By.cssSelector("li.success-msg span")).getText();
+		String success_msg="Thank you for registering with Main Website Store.";
+		Assert.assertTrue(successMessage.equalsIgnoreCase(successMessage), "Registeration with new username is not successful"); 
 		
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("account_link"))).click();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
