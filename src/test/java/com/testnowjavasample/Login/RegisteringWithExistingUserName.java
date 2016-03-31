@@ -37,6 +37,7 @@ public class RegisteringWithExistingUserName extends TestSuiteBase
 		Driver_Config.driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("register_button"))).click();
 		
+		Driver_Config.driver.manage().timeouts().implicitlyWait(180, TimeUnit.SECONDS);
 		String errorMessage=Driver_Config.driver.findElement(By.cssSelector("li.error-msg span")).getText();
 		String err_msg="There is already an account with this email address. If you are sure that it is your email address, click here to get your password and access your account.";
 		Assert.assertTrue(errorMessage.equalsIgnoreCase(err_msg), "Registeration with existing username is not successful");

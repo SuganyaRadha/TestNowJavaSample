@@ -22,7 +22,7 @@ public class RegisteringWithNewUserName extends TestSuiteBase
 {
 	
 	@Test(dataProvider="getTestData")
-	public void New_Registeration(String firstname, String lastname, String passwd)
+	public void New_Registeration(String firstname, String lastname, String passwd) throws InterruptedException
 	{
 		RandomString msr = new RandomString();
 		String email = msr.generateRandomString()+"@mailinator.com";
@@ -37,6 +37,9 @@ public class RegisteringWithNewUserName extends TestSuiteBase
 		Driver_Config.driver.findElement(By.id(OR.getProperty("register_newlastname"))).sendKeys(lastname);
 		Driver_Config.driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		Driver_Config.driver.findElement(By.id(OR.getProperty("register_newemail"))).sendKeys(email);
+		Driver_Config.driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
+		Thread.sleep(3000);
+		
 		Driver_Config.driver.findElement(By.id(OR.getProperty("register_password"))).sendKeys(passwd);
 		Driver_Config.driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		Driver_Config.driver.findElement(By.id(OR.getProperty("register_confirmpassword"))).sendKeys(passwd);
