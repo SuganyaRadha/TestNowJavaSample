@@ -38,5 +38,11 @@
     </classes>
 </test>
 
+<test name="PhilipsSearch">
+    <classes>
+        <class name="com.testnowjavasample.checkout.PhilipsSearch" ></class>  
+    </classes>
+</test>
+
 </suite>
 

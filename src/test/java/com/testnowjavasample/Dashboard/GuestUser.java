@@ -30,18 +30,23 @@ public class GuestUser extends TestSuiteBase
 		Driver_Config.driver.manage().timeouts().implicitlyWait(240, TimeUnit.SECONDS);
 		Thread.sleep(3000);
 		
-		Assert.assertTrue(Driver_Config.driver.getPageSource().contains("Thank you for your subscription."), "Newsletter subscription with guest username is not successful");
+		String newsSuccessMessage=Driver_Config.driver.findElement(By.cssSelector("li.success-msg span")).getText();
+		String newsSuccess_msg="Thank you for your subscription.";
+		Assert.assertTrue(newsSuccessMessage.equalsIgnoreCase(newsSuccess_msg), "Newsletter subscription with guest username is not successful");
 		
-		//checking the same thing with existing user
+		//checking newsletter subscription with registered user in main page without logging in
 		
 		Driver_Config.driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("newsletter_main"))).sendKeys("admin@mailinator.com");
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("clicksubscription_mainpage"))).click();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
 		Thread.sleep(3000);
-		String regUser_Message=".//*[@id='top']/body/div[1]/div/div[2]/div/div[1]/ul/li/ul/li/span";
-		Assert.assertTrue(Driver_Config.driver.findElement(By.xpath(regUser_Message)).isDisplayed(), "Newsletter subscription with registered username in main page is not successful");
-						
+		
+		String newerrorMessage=Driver_Config.driver.findElement(By.cssSelector("li.error-msg span")).getText();
+		String newserr_msg="There was a problem with the subscription: This email address is already assigned to another user.";
+		Assert.assertTrue(newerrorMessage.equalsIgnoreCase(newserr_msg), "Newsletter subscription with registered username in main page is not successful");
+		
+
 	}
 	
 	@AfterMethod
