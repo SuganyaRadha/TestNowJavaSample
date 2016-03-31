@@ -33,7 +33,7 @@ public class Driver_Config
 		String browser = getEnvVariable("BROWSER");
 		if (browser == null)
 		{
-			browser = "opera";
+			browser = "firefox";
 		}
 		
 		if ("Firefox".equalsIgnoreCase(browser))

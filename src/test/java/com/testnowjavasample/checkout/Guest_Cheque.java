@@ -53,9 +53,9 @@ public class Guest_Cheque extends TestSuiteBase
 		com.testnowjavasample.checkout.TestSuiteBase.fillBillingInfo();
 		
 		Driver_Config.driver.manage().timeouts().implicitlyWait(180, TimeUnit.SECONDS);
-		Driver_Config.driver.findElement(By.cssSelector(OR.getProperty("shipping_continue"))).click();
+		Driver_Config.driver.findElement(By.xpath(OR.getProperty("shipping_continue"))).click();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(180, TimeUnit.SECONDS);
-		new WebDriverWait(Driver_Config.driver, 120).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.getProperty("payment_continue"))));
+		new WebDriverWait(Driver_Config.driver, 120).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(OR.getProperty("payment_continue"))));
 		Driver_Config.driver.findElement(By.id(OR.getProperty("pmethod_chequemode"))).click();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(180, TimeUnit.SECONDS);
 		
