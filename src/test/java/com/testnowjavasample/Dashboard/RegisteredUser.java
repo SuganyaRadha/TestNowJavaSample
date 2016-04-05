@@ -33,8 +33,8 @@ public class RegisteredUser extends TestSuiteBase
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("login_link"))).click();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		
-		Driver_Config.driver.findElement(By.id(OR.getProperty("username_object"))).sendKeys("admin@mailinator.com");
-		Driver_Config.driver.findElement(By.id(OR.getProperty("password_object"))).sendKeys("adminadmin");
+		Driver_Config.driver.findElement(By.cssSelector(OR.getProperty("username_object"))).sendKeys("admin@mailinator.com");
+		Driver_Config.driver.findElement(By.cssSelector(OR.getProperty("password_object"))).sendKeys("adminadmin");
 		Driver_Config.driver.findElement(By.id(OR.getProperty("login_button"))).click();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		

@@ -29,19 +29,19 @@ public class InvalidLoginTest extends TestSuiteBase
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("account_link"))).click();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("login_link"))).click();
-		Driver_Config.driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		Driver_Config.driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		
-		Driver_Config.driver.findElement(By.id(OR.getProperty("username_object"))).sendKeys(userName);
-		Driver_Config.driver.findElement(By.id(OR.getProperty("password_object"))).sendKeys(passwd);
+		Driver_Config.driver.findElement(By.cssSelector(OR.getProperty("username_object"))).sendKeys(userName);
+		Driver_Config.driver.findElement(By.cssSelector(OR.getProperty("password_object"))).sendKeys(passwd);
 		Driver_Config.driver.findElement(By.id(OR.getProperty("login_button"))).click();
 		
 		String invalidmessage = Driver_Config.driver.findElement(By.cssSelector("li.error-msg span")).getText();
 		String invalid_msg="Invalid login or password.";
 		Assert.assertTrue(invalidmessage.equalsIgnoreCase(invalid_msg), "Login Test with invalid credentials is not successful");
 				
-		Driver_Config.driver.findElement(By.id(OR.getProperty("username_object"))).clear();
+		Driver_Config.driver.findElement(By.cssSelector(OR.getProperty("username_object"))).clear();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
-		Driver_Config.driver.findElement(By.id(OR.getProperty("password_object"))).clear();
+		Driver_Config.driver.findElement(By.cssSelector(OR.getProperty("password_object"))).clear();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
 		
 	}

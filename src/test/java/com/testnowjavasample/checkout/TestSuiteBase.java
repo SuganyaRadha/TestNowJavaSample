@@ -154,28 +154,6 @@ public class TestSuiteBase extends TestBase{
 		Driver_Config.driver.findElement(By.xpath("//ul[contains(@class,'products-grid')]/li["+product_index+"]//button")).click();		
 	}
 	
-	public static void register_newUser(String firstname, String lastname, String passwd) throws InterruptedException
-	{
-		RandomString msr = new RandomString();
-		String email = msr.generateRandomString()+"@mailinator.com";
-		
-		Driver_Config.driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		Driver_Config.driver.findElement(By.xpath(OR.getProperty("account_link"))).click();
-		Driver_Config.driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		Driver_Config.driver.findElement(By.xpath(OR.getProperty("register_link"))).click();
-		Driver_Config.driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		
-		Driver_Config.driver.findElement(By.id(OR.getProperty("register_newfirstname"))).sendKeys(firstname);
-		Driver_Config.driver.findElement(By.id(OR.getProperty("register_newlastname"))).sendKeys(lastname);
-		Driver_Config.driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		Driver_Config.driver.findElement(By.id(OR.getProperty("register_newemail"))).sendKeys(email);
-		Driver_Config.driver.findElement(By.id(OR.getProperty("register_password"))).sendKeys(passwd);
-		Driver_Config.driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		Driver_Config.driver.findElement(By.id(OR.getProperty("register_confirmpassword"))).sendKeys(passwd);
-		Driver_Config.driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		Driver_Config.driver.findElement(By.xpath(OR.getProperty("register_button"))).click();
-		Driver_Config.driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
-	}
 
 	
 }

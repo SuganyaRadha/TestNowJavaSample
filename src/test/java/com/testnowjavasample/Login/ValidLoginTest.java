@@ -40,8 +40,8 @@ public class ValidLoginTest extends TestSuiteBase
 		Driver_Config.driver.findElement(By.xpath(OR.getProperty("login_link"))).click();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		
-		Driver_Config.driver.findElement(By.id(OR.getProperty("username_object"))).sendKeys(userName);
-		Driver_Config.driver.findElement(By.id(OR.getProperty("password_object"))).sendKeys(passwd);
+		Driver_Config.driver.findElement(By.cssSelector(OR.getProperty("username_object"))).sendKeys(userName);
+		Driver_Config.driver.findElement(By.cssSelector(OR.getProperty("password_object"))).sendKeys(passwd);
 		Driver_Config.driver.findElement(By.id(OR.getProperty("login_button"))).click();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
 		

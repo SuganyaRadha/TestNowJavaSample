@@ -24,9 +24,9 @@ public class LoginTestWithoutCredentials extends TestSuiteBase
 		
 		Driver_Config.driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
-		Driver_Config.driver.findElement(By.id(OR.getProperty("username_object"))).sendKeys();
+		Driver_Config.driver.findElement(By.cssSelector(OR.getProperty("username_object"))).sendKeys();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		Driver_Config.driver.findElement(By.id(OR.getProperty("password_object"))).sendKeys();
+		Driver_Config.driver.findElement(By.cssSelector(OR.getProperty("password_object"))).sendKeys();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		Driver_Config.driver.findElement(By.id(OR.getProperty("login_button"))).click();
 		Driver_Config.driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
